@@ -1,0 +1,178 @@
+/* Custom CSS for GlobalLogix Logistics Website */
+@import 'animations.css';
+
+:root {
+    --navy: #002147;
+    --gold: #FF8C00;
+    --slate: #4A5568;
+    --light-bg: #F8F9FA;
+}
+
+/* Custom Utility Classes */
+.bg-navy { background-color: var(--navy); }
+.text-gold { color: var(--gold); }
+.bg-gold { background-color: var(--gold); }
+.border-gold { border-color: var(--gold); }
+.hover\:bg-gold-dark:hover { background-color: #e67e00; }
+.hover\:text-gold:hover { color: var(--gold); }
+
+/* Header Styles */
+.header-scrolled {
+    background-color: rgba(0, 33, 71, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Hero Section */
+.hero-overlay {
+    background: linear-gradient(90deg, rgba(0, 33, 71, 0.85) 0%, rgba(0, 33, 71, 0.7) 100%);
+}
+
+.hero-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Tracking Input */
+.tracking-input-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Stats Section */
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid var(--gold);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Services Cards */
+.service-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border-top: 4px solid var(--navy);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-card.air-card { border-top-color: #3498db; }
+.service-card.sea-card { border-top-color: #2980b9; }
+.service-card.road-card { border-top-color: #2c3e50; }
+
+/* Map Visualization */
+.map-container {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.route-line {
+    stroke-dasharray: 10;
+    animation: dash 30s linear infinite;
+}
+
+.package-icon {
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+/* Admin Dashboard */
+.dashboard-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.shipment-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.status-in-transit { background-color: #fef3c7; color: #92400e; }
+.status-delivered { background-color: #d1fae5; color: #065f46; }
+.status-pending { background-color: #e0e7ff; color: #3730a3; }
+
+/* Footer Styles */
+.footer-column h3 {
+    position: relative;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--gold);
+}
+
+.footer-link {
+    transition: all 0.2s ease;
+    position: relative;
+    padding-left: 8px;
+}
+
+.footer-link:hover {
+    color: var(--gold);
+    padding-left: 12px;
+}
+
+.footer-link::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.footer-link:hover::before {
+    opacity: 1;
+}
+
+/* Modal Styles */
+.modal-container {
+    max-width: 90%;
+    width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .stat-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-column {
+        margin-bottom: 2rem;
+    }
+}
