@@ -3,57 +3,392 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlobalLogix | Global Logistics Company Since 2012</title>
+    <title>Aurum Global Logistics | Secure Transport Since 2012</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter for that "Corporate" look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/48/shipped.png">
+
+    <!-- Custom Config for Tailwind Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#002147', // Deep Navy
+                            light: '#F8F9FA', // Professional White
+                            gold: '#FF8C00',  // Safety Orange/Gold Action
+                            slate: '#334155'  // Slate Grey
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="font-inter">
-    <!-- Header/Navigation -->
-    <header id="main-header" class="sticky top-0 z-50">
-        <!-- Header content will be loaded via JavaScript -->
-    </header>
+<body class="font-sans text-slate-800 bg-brand-light antialiased">
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative overflow-hidden">
-        <!-- Hero content will be loaded via JavaScript -->
-    </section>
-
-    <!-- Stats Section -->
-    <section id="stats" class="py-16 bg-navy">
-        <!-- Stats content will be loaded via JavaScript -->
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-16 bg-light-bg">
-        <!-- Services content will be loaded via JavaScript -->
-    </section>
-
-    <!-- Global Map Section -->
-    <section id="global-map" class="py-16">
-        <!-- Global map content will be loaded via JavaScript -->
-    </section>
-
-    <!-- Admin Dashboard Section -->
-    <section id="admin-dashboard" class="py-16 bg-light-bg">
-        <!-- Admin dashboard content will be loaded via JavaScript -->
-    </section>
-
-    <!-- Footer -->
-    <footer id="main-footer" class="bg-gray-900 text-white">
-        <!-- Footer content will be loaded via JavaScript -->
-    </footer>
-
-    <!-- Tracking Modal -->
-    <div id="tracking-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
-        <!-- Modal content will be loaded via JavaScript -->
+    <!-- TOP BAR (Contact Info) -->
+    <div class="bg-brand-navy text-gray-300 text-xs py-2 hidden md:block border-b border-gray-700">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex gap-6">
+                <span><i class="fas fa-phone-alt mr-2 text-brand-gold"></i> +1 (800) 999-2012</span>
+                <span><i class="fas fa-envelope mr-2 text-brand-gold"></i> corporate@aurumlogistics.com</span>
+            </div>
+            <div class="flex gap-4">
+                <span><i class="fas fa-clock mr-2"></i> Mon-Fri: 08:00 - 22:00</span>
+                <span class="text-brand-gold font-bold">ISO 9001 Certified</span>
+            </div>
+        </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
-    <script src="js/tracking.js"></script>
+    <!-- STICKY HEADER -->
+    <header id="main-header" class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 bg-brand-navy text-white flex items-center justify-center rounded text-xl font-bold group-hover:bg-brand-gold transition-colors">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-extrabold text-brand-navy tracking-tight leading-none">AURUM</h1>
+                    <span class="text-xs text-gray-500 font-semibold tracking-widest">GLOBAL LOGISTICS</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex gap-8 font-medium text-sm text-brand-navy">
+                <a href="#" class="hover:text-brand-gold transition">Home</a>
+                <a href="#tracking-section" class="hover:text-brand-gold transition">Track</a>
+                <a href="#services" class="hover:text-brand-gold transition">Services</a>
+                <a href="#tech-dashboard" class="hover:text-brand-gold transition">Technology</a>
+                <a href="#about" class="hover:text-brand-gold transition">About Us</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#appointments" class="text-sm font-semibold text-brand-navy hover:underline">Appointments</a>
+                <a href="#quote" class="bg-brand-gold text-white px-6 py-2.5 rounded font-bold text-sm shadow hover:bg-orange-600 transition transform hover:-translate-y-0.5">
+                    Get a Quote
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand-navy">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 flex-col gap-4 shadow-lg absolute w-full">
+            <a href="#" class="block font-medium">Home</a>
+            <a href="#tracking-section" class="block font-medium">Track Shipment</a>
+            <a href="#services" class="block font-medium">Services</a>
+            <a href="#contact" class="block font-medium">Contact</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative h-[85vh] flex items-center justify-center bg-brand-navy overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Cargo Ship" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-navy/90 to-brand-navy/60"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6 text-center md:text-left grid md:grid-cols-2 gap-12 items-center">
+            <!-- Hero Text -->
+            <div class="space-y-6">
+                <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded border border-brand-gold/30">
+                    ESTABLISHED 2012
+                </div>
+                <h2 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+                    Global Logistics Solutions <br>
+                    <span class="text-brand-gold">Secure & On Time.</span>
+                </h2>
+                <p class="text-gray-300 text-lg md:max-w-lg">
+                    From high-value bullion transport to complex international freight. We bridge the gap between 200+ countries with military-grade precision.
+                </p>
+                
+                <!-- Tracking Widget (The "Authenticity" Feature) -->
+                <div id="tracking-section" class="bg-white p-2 rounded-lg shadow-2xl flex flex-col md:flex-row gap-2 max-w-lg mt-8">
+                    <div class="flex-grow flex items-center px-4 bg-gray-100 rounded">
+                        <i class="fas fa-map-marker-alt text-brand-navy mr-3"></i>
+                        <input type="text" id="tracking-input" placeholder="Enter Tracking ID (e.g., AUR-8821)" class="w-full bg-transparent border-none outline-none py-3 text-brand-navy placeholder-gray-500 font-medium">
+                    </div>
+                    <button id="track-btn" class="bg-brand-navy text-white px-8 py-3 rounded font-bold hover:bg-blue-900 transition flex items-center justify-center gap-2">
+                        <span>TRACK</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Mock Tracking Result (Hidden initially) -->
+                <div id="tracking-result" class="hidden mt-4 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-lg text-left">
+                    <!-- JS injects content here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="py-12 bg-white -mt-10 relative z-20 container mx-auto px-6 rounded-lg shadow-xl border-b-4 border-brand-gold">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gray-200">
+            <div class="p-4">
+                <h3 class="text-4xl font-extrabold text-brand-navy">12+</h3>
+                <p class="text-gray-500 font-semibold uppercase text-xs mt-2 tracking-wider">Years Excellence</p>
+            </div>
+            <div class="p-4">
+                <h3 class="text-4xl font-extrabold text-brand-navy">200+</h3>
+                <p class="text-gray-500 font-semibold uppercase text-xs mt-2 tracking-wider">Countries Covered</p>
+            </div>
+            <div class="p-4">
+                <h3 class="text-4xl font-extrabold text-brand-navy">1M+</h3>
+                <p class="text-gray-500 font-semibold uppercase text-xs mt-2 tracking-wider">Tons Shipped</p>
+            </div>
+            <div class="p-4">
+                <h3 class="text-4xl font-extrabold text-brand-navy">24/7</h3>
+                <p class="text-gray-500 font-semibold uppercase text-xs mt-2 tracking-wider">Global Support</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES GRID -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-brand-navy mb-4">Our Core Capabilities</h2>
+                <div class="w-16 h-1 bg-brand-gold mx-auto rounded"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Air Freight -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1559297434-fae8a1916a79?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Air Freight" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-8">
+                        <div class="w-12 h-12 bg-blue-50 text-brand-navy rounded-full flex items-center justify-center text-xl mb-6">
+                            <i class="fas fa-plane-departure"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Air Freight</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Expedited global shipping for high-value time-sensitive cargo. Secure specialized handling for precious metals.
+                        </p>
+                        <a href="#" class="text-brand-gold font-bold text-sm hover:underline">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Ocean Freight -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1494412574643-35d32468817e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ocean Freight" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-8">
+                        <div class="w-12 h-12 bg-blue-50 text-brand-navy rounded-full flex items-center justify-center text-xl mb-6">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Ocean Freight</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Cost-effective full container load (FCL) and less than container load (LCL) solutions connecting major global ports.
+                        </p>
+                        <a href="#" class="text-brand-gold font-bold text-sm hover:underline">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Road Freight -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Road Freight" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-8">
+                        <div class="w-12 h-12 bg-blue-50 text-brand-navy rounded-full flex items-center justify-center text-xl mb-6">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Road Freight</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Reliable domestic trucking and last-mile delivery networks ensuring your cargo reaches the final destination safely.
+                        </p>
+                        <a href="#" class="text-brand-gold font-bold text-sm hover:underline">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH DASHBOARD SIMULATION (For Investor Pitch) -->
+    <section id="tech-dashboard" class="py-20 bg-brand-navy text-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                
+                <!-- Text Content -->
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Enterprise-Grade Visibility</h2>
+                    <p class="text-gray-300 mb-6 text-lg">
+                        Our proprietary <span class="text-brand-gold font-bold">AurumTrack™</span> system provides real-time telemetry, geolocation, and status updates for high-value assets.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
+                            <span>Real-time GPS Sat-Link Tracking</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
+                            <span>Automated Customs Clearance Docs</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
+                            <span>256-bit Encrypted Client Portal</span>
+                        </li>
+                    </ul>
+                    <button class="border border-white text-white px-6 py-3 rounded hover:bg-white hover:text-brand-navy transition font-bold">
+                        Schedule Demo
+                    </button>
+                </div>
+
+                <!-- Mock Dashboard UI -->
+                <div class="md:w-1/2 w-full relative group">
+                    <!-- The Laptop/Screen container -->
+                    <div class="bg-gray-900 rounded-lg shadow-2xl border border-gray-700 p-2 overflow-hidden transform group-hover:scale-105 transition duration-500">
+                        <!-- Fake Browser Header -->
+                        <div class="bg-gray-800 h-8 rounded-t flex items-center gap-2 px-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <!-- UI Content -->
+                        <div class="bg-slate-50 text-slate-800 p-4 min-h-[300px] grid grid-cols-3 gap-4">
+                            <!-- Sidebar -->
+                            <div class="col-span-1 bg-white rounded shadow p-3 space-y-3">
+                                <div class="h-2 w-1/2 bg-gray-200 rounded"></div>
+                                <div class="h-8 bg-blue-50 rounded border-l-4 border-brand-navy"></div>
+                                <div class="h-8 bg-white rounded"></div>
+                                <div class="h-8 bg-white rounded"></div>
+                                <div class="mt-8 h-24 bg-gray-100 rounded flex items-end justify-center pb-2">
+                                    <span class="text-[10px] text-gray-400">Shipment Vol</span>
+                                </div>
+                            </div>
+                            <!-- Map Area -->
+                            <div class="col-span-2 space-y-4">
+                                <!-- Stats Row -->
+                                <div class="flex gap-2">
+                                    <div class="flex-1 bg-white p-2 shadow rounded">
+                                        <div class="text-[10px] text-gray-400">Active Units</div>
+                                        <div class="font-bold text-brand-gold">1,204</div>
+                                    </div>
+                                    <div class="flex-1 bg-white p-2 shadow rounded">
+                                        <div class="text-[10px] text-gray-400">On Time</div>
+                                        <div class="font-bold text-green-600">99.4%</div>
+                                    </div>
+                                </div>
+                                <!-- Map -->
+                                <div class="bg-gray-200 h-40 rounded shadow relative overflow-hidden">
+                                    <iframe 
+                                        width="100%" 
+                                        height="100%" 
+                                        frameborder="0" 
+                                        scrolling="no" 
+                                        marginheight="0" 
+                                        marginwidth="0" 
+                                        src="https://maps.google.com/maps?q=Singapore&t=&z=3&ie=UTF8&iwloc=&output=embed"
+                                        class="opacity-70 grayscale">
+                                    </iframe>
+                                    <!-- Animated Dot -->
+                                    <div class="absolute top-1/2 left-1/2 w-3 h-3 bg-red-600 rounded-full animate-ping"></div>
+                                    <div class="absolute top-1/2 left-1/2 w-3 h-3 bg-red-600 rounded-full border-2 border-white"></div>
+                                    
+                                    <!-- Tooltip -->
+                                    <div class="absolute top-1/3 left-1/2 ml-4 bg-brand-navy text-white text-[10px] px-2 py-1 rounded shadow">
+                                        ID: #8821 <br> Status: In Transit
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (Trust Signals) -->
+    <footer class="bg-slate-900 text-gray-400 text-sm pt-16 pb-8 border-t border-brand-gold">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            
+            <!-- Col 1: Bio -->
+            <div>
+                <div class="flex items-center gap-2 mb-6 text-white">
+                    <i class="fas fa-cube text-brand-gold text-2xl"></i>
+                    <span class="text-xl font-bold tracking-tight">AURUM LOGISTICS</span>
+                </div>
+                <p class="mb-6 leading-relaxed">
+                    Established in 2012, Aurum Global Logistics has become a leader in secure, high-value freight transport. We connect markets with speed, security, and integrity.
+                </p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/ISO_9001-2015_certified.png" alt="ISO Certified" class="h-12 opacity-80 bg-white p-1 rounded">
+            </div>
+
+            <!-- Col 2: Quick Links -->
+            <div>
+                <h4 class="text-white font-bold mb-6 uppercase tracking-wider">Quick Links</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="hover:text-brand-gold transition">Home</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition">Our Services</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition">Track Shipment</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition">Investor Relations</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition">Latest News</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Useful Links -->
+            <div>
+                <h4 class="text-white font-bold mb-6 uppercase tracking-wider">Support</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="hover:text-brand-gold transition">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition">Terms & Conditions</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition">FAQ</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition">Get a Quote</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Contact -->
+            <div>
+                <h4 class="text-white font-bold mb-6 uppercase tracking-wider">Head Office</h4>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-map-marker-alt mt-1 text-brand-gold"></i>
+                        <span>100 Financial District Blvd,<br>Suite 400, New York, NY 10005</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-phone mt-1 text-brand-gold"></i>
+                        <span>+1 (800) 999-2012</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-envelope mt-1 text-brand-gold"></i>
+                        <span>corporate@aurumlogistics.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 pt-8 border-t border-gray-800 text-center flex flex-col md:flex-row justify-between items-center">
+            <p>&copy; 2012-2025 Aurum Global Logistics. All Rights Reserved.</p>
+            <div class="flex gap-4 mt-4 md:mt-0 text-lg">
+                <a href="#" class="hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
